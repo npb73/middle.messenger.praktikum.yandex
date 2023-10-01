@@ -3,6 +3,7 @@ import ServerErrorPage from './src/pages/ServerErrorPage';
 import LoginPage from './src/pages/LoginPage';
 import './style.sass'
 
+
 const ROUTES = (route) => {
   switch(route){
     case "/404": return NotFoundPage();

@@ -9,7 +9,7 @@ const ROUTES = (route) => {
     case "/404": return NotFoundPage();
     case "/500": return ServerErrorPage();
     case "/login": return LoginPage();
-    default: return LoginPage();
+    default: return NotFoundPage();
   }
 }
 

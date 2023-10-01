@@ -1,6 +1,6 @@
 import NotFoundPage from './src/pages/NotFoundPage';
 import ServerErrorPage from './src/pages/ServerErrorPage';
-import LoginPage from './src/pages/LogInPage';
+import LoginPage from './src/pages/LoginPage';
 import './style.sass'
 
 const ROUTES = (route) => {

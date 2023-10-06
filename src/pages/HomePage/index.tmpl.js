@@ -4,6 +4,6 @@ export const tmpl =
 `
 <div class="filter"></div>
 <div class="${style.mainWrapper}">
-  <span>zaglushka</span>
+  <span>messenger</span>
 </div>
 `

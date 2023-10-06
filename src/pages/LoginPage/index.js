@@ -2,11 +2,14 @@ import Handlebars from 'handlebars';
 import {tmpl} from './index.tmpl'
 
 import CustomInput from "../../components/CustomInput"
+import CustomButton from "../../components/CustomButton"
+
 
 const LoginPage = () => {
   return Handlebars.compile(tmpl)({
-    login: CustomInput({placeholder: 'login', name: 'login', type: 'text'}),
-    password: CustomInput({placeholder: 'password', name: 'password', type: 'password'})
+    login: CustomInput({placeholder: 'login', type: "text", name: "login"}),
+    password: CustomInput({placeholder: 'password', type: "password", name: "password"}),
+    button: CustomButton({buttonName: "Log In"})
   })
 }
 

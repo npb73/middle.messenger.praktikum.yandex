@@ -5,10 +5,15 @@ export const tmpl =
 <div class="filter"></div>
 <div class="${style.mainWrapper}">
   <form class="${style.formWrapper}">
-    <h1>log in</h1> 
+    <h1>create account</h1> 
 
-    {{{login}}}
+    {{{email}}}
+    {{{firstname}}}
+    {{{lastname}}}
+    {{{phone}}}
     {{{password}}}
+    {{{passwordAccept}}}
+    
     {{{button}}}
     
   </form>

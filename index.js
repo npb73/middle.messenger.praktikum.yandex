@@ -1,14 +1,19 @@
 import NotFoundPage from './src/pages/NotFoundPage';
 import ServerErrorPage from './src/pages/ServerErrorPage';
 import LoginPage from './src/pages/LoginPage';
+import SignupPage from './src/pages/SignupPage';
+import HomePage from './src/pages/HomePage';
+
 import './style.sass'
 
 
 const ROUTES = (route) => {
   switch(route){
-    case "/404": return NotFoundPage();
+    case "/4044": return NotFoundPage();
     case "/500": return ServerErrorPage();
     case "/login": return LoginPage();
+    case "/signup": return SignupPage();
+    case "/home": return HomePage();
     default: return NotFoundPage();
   }
 }

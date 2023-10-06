@@ -4,7 +4,7 @@ export const tmpl =
 `
 <div class="${style.inputWrapper}">
 <span class="${style.inputName}">{{placeholder}}</span>
-<input name="{{name}}" class="${style.customInput}" type="text" placeholder="{{placeholder}}"/>
+<input class="${style.customInput}" placeholder="{{placeholder}}" name="{{name}}" type="{{type}}"/>
 </div>
 
 `

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.0.1-blue.svg">
 
@@ -42,5 +41,3 @@
 
 Страницы вы можете посомтрев, перейдя по ссылкам. 
 Проект задеплоен с помощью [Netlify](https://www.netlify.com/)
-=======
->>>>>>> 69ae303c5b97c2662434074926666557eebfcc17

@@ -17,6 +17,8 @@
 Проект написанный на ванильном JavaScript с использованием библиотеки handlebars.
 В качестве CSS-препроцессора был выбран sass.
 
+Дизайн проекта находится по [ссылке](https://www.figma.com/file/NQSdPkYvzrWn0iqKd7HWDB/Yandex-Chat-Design?type=design&node-id=0-1&mode=design&t=yPfvzLL9ZFkgrKtC-0)
+
 ## Запуск проекта
 
 Из корневого каталога проекта выполните следующую команду:

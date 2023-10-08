@@ -12,5 +12,3 @@ app.get("*", (_, res) => {
 app.listen(PORT, () => {
   console.log(`Проект запущен: http://localhost:${PORT}`);
 });
-
- 

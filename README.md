@@ -35,6 +35,8 @@
 В первом спринте был реализован следующий функционал: 
 - [Страница авторизации](https://hilarious-douhua-520b9f.netlify.app/login)
 - [Страница регистрации](https://hilarious-douhua-520b9f.netlify.app/signup)
+- [Страница редактирования профиля](https://hilarious-douhua-520b9f.netlify.app/editprofile)
+- [Страница смены пароля](https://hilarious-douhua-520b9f.netlify.app/editpassword)
 - [Страница 404](https://hilarious-douhua-520b9f.netlify.app/404)
 - [Страница 500](https://hilarious-douhua-520b9f.netlify.app/500)
 - [Домашняя страница (заглушка)](https://hilarious-douhua-520b9f.netlify.app/home)

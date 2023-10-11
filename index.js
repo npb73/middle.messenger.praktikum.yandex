@@ -3,17 +3,22 @@ import ServerErrorPage from './src/pages/ServerErrorPage';
 import LoginPage from './src/pages/LoginPage';
 import SignupPage from './src/pages/SignupPage';
 import HomePage from './src/pages/HomePage';
+import EditProfilePage from './src/pages/EditProfilePage';
+import EditPasswordPage from './src/pages/EditPasswordPage';
+
 
 import './style.sass'
 
 
 const ROUTES = (route) => {
   switch(route){
-    case "/4044": return NotFoundPage();
+    case "/404": return NotFoundPage();
     case "/500": return ServerErrorPage();
     case "/login": return LoginPage();
     case "/signup": return SignupPage();
     case "/home": return HomePage();
+    case "/editprofile": return EditProfilePage();
+    case "/editpassword": return EditPasswordPage();
     default: return NotFoundPage();
   }
 }

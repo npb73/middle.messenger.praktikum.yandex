@@ -1,10 +1,3 @@
-// import NotFoundPage from './src/pages/NotFoundPage';
-// import ServerErrorPage from './src/pages/ServerErrorPage';
-// import LoginPage from './src/pages/LoginPage';
-// import SignupPage from './src/pages/SignUpPage';
-// import HomePage from './src/pages/HomePage';
-// import EditProfilePage from './src/pages/EditProfilePage';
-// import EditPasswordPage from './src/pages/EditPasswordPage';
 import { NotFoundPage } from './src/pages/NotFoundPage';
 import { ServerErrorPage } from './src/pages/ServerErrorPage';
 

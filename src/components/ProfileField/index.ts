@@ -1,5 +1,5 @@
 import { tmpl } from './profileField.tmpl';
-import './profileField.scss';
+import './profileField.sass';
 import Block from '../../utils/Block';
 
 type ProfileFieldProps = {

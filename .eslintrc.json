@@ -1,0 +1,50 @@
+{
+    "extends": [
+        "airbnb",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "prettier"],
+    "rules": {
+        "max-len": [1, 120],
+        "indent": [2],
+        "arrow-body-style": "off",
+        "import/prefer-default-export": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "no-tabs": ["error", { "allowIndentationTabs": true }],
+        "no-underscore-dangle": "off",
+        "class-methods-use-this": "off",
+        "no-unused-vars": ["error", { "args": "none" }],
+        "default-param-last": "off",
+        "linebreak-style": ["error", "unix"],
+        "prettier/prettier": [
+        1,
+        {
+            "semi": true,
+            "trailingComma": "es5",
+            "singleQuote": true,
+            "tabWidth": 2,
+            "printWidth": 120,
+            "arrowParens": "avoid",
+            "endOfLine": "auto",
+            "bracketSameLine": true
+        }
+        ]
+    },
+    "root": true,
+    "env": {
+        "browser": true
+    },
+    "settings": {
+        "import/resolver": {
+        "node": {
+            "extensions": [".js", ".ts"]
+        }
+        }
+    }
+}

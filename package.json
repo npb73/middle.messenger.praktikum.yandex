@@ -32,7 +32,9 @@
     "path": "^0.12.7",
     "sass": "^1.68.0",
     "sass-loader": "^13.3.2",
-    "stylelint": "^15.11.0"
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-scss": "^5.3.1"
   },
   "engines": {
     "npm": ">=8.0.0",

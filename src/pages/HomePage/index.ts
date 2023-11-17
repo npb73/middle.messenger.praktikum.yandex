@@ -1,7 +1,7 @@
 import { tmpl } from './homePage.tmpl.ts';
 import Block from '../../utils/Block';
 
-import './homePage.sass';
+import './homepage.sass';
 
 export class HomePage extends Block {
   constructor() {

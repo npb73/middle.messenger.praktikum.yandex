@@ -236,6 +236,3 @@ abstract class Block<P extends Record<string, any> = any> {
 }
 
 export default Block;
-function getEventListeners(_element: HTMLElement | null) {
-  throw new Error('Function not implemented.');
-}

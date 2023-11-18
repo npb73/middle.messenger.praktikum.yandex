@@ -35,6 +35,8 @@ export class Form extends Block {
         formResult[el.inputParam.name] = el.inputParam.elementVal;
       }
     });
+
+    // eslint-disable-next-line no-console
     console.log(formResult);
   }
 

@@ -1,6 +1,7 @@
 import { tmpl } from './input.tmpl';
 import './input.sass';
 import Block from '../../utils/Block';
+import { validator } from '../../utils/Validation';
 
 export type InputProps = {
   placeholder: string;
@@ -21,6 +22,18 @@ export class Input extends Block {
       elementVal: this.element!.querySelector('input')!.value,
       isValid: false,
     };
+
+    // Немного намудрил с архитектурой, попробую исправить в следующем спринте
+    // пока итог только такой, без использования _addEvents
+    const inputElement = this.element!.querySelector('input');
+    if (inputElement) {
+      inputElement.addEventListener('blur', e => {
+        this.setInputVal((e.target as HTMLInputElement).value);
+        const { isValid, errorText } = validator(inputElement.name, (e.target as HTMLInputElement).value);
+        this.setInputIsValid(isValid);
+        this.element!.querySelector('.errorText')!.textContent = errorText;
+      });
+    }
   }
 
   get inputValue() {
@@ -33,15 +46,6 @@ export class Input extends Block {
 
   setInputIsValid(param: boolean) {
     this.inputParam.isValid = param;
-  }
-
-  _addEvents() {
-    Object.keys(this.props.events).forEach(eventName => {
-      this.element!.querySelector('input')!.addEventListener(eventName, e => {
-        this.setInputVal((e.target as HTMLInputElement).value);
-        this.props.events[eventName].apply(this);
-      });
-    });
   }
 
   render() {

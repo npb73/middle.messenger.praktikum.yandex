@@ -7,9 +7,6 @@ export type InputProps = {
   placeholder: string;
   type: string;
   name: string;
-  events: {
-    blur?: () => void;
-  };
 };
 
 export class Input extends Block {

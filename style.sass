@@ -2,10 +2,11 @@
   font-family: roboto
   src: url('./static/fonts/RobotoMono-Thin.ttf')
   
-*
+html, body
   margin: 0
   padding: 0
   font-family: roboto, monospace
+  overflow-x: hidden !important
 
 .filter 
   position: absolute
@@ -25,7 +26,7 @@
 
 @keyframes move_bg 
   0% 
-    background-position-y: 0px
+    background-position-y: 0
 
   100% 
     background-position: 5px

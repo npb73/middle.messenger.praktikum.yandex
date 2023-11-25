@@ -1,33 +1,42 @@
-import NotFoundPage from './src/pages/NotFoundPage';
-import ServerErrorPage from './src/pages/ServerErrorPage';
-import LoginPage from './src/pages/LoginPage';
-import SignupPage from './src/pages/SignupPage';
-import HomePage from './src/pages/HomePage';
-import EditProfilePage from './src/pages/EditProfilePage';
-import EditPasswordPage from './src/pages/EditPasswordPage';
+import { NotFoundPage } from './src/pages/NotFoundPage';
+import { ServerErrorPage } from './src/pages/ServerErrorPage';
 
+import { Login } from './src/pages/LoginPage';
+import { SignUp } from './src/pages/SignUp';
 
-import './style.sass'
+import { Profile } from './src/pages/Profile';
+import { ChangePassword } from './src/pages/ChangePassword';
 
+import { HomePage } from './src/pages/HomePage';
 
-const ROUTES = (route) => {
-  switch(route){
-    case "/404": return NotFoundPage();
-    case "/500": return ServerErrorPage();
-    case "/login": return LoginPage();
-    case "/signup": return SignupPage();
-    case "/home": return HomePage();
-    case "/editprofile": return EditProfilePage();
-    case "/editpassword": return EditPasswordPage();
-    default: return NotFoundPage();
+import './style.sass';
+import './variables.sass';
+
+const ROUTES = route => {
+  switch (route) {
+    case '/404':
+      return new NotFoundPage();
+    case '/500':
+      return new ServerErrorPage();
+    case '/login':
+      return new Login();
+    case '/signup':
+      return new SignUp();
+    case '/home':
+      return new HomePage();
+    case '/editprofile':
+      return new Profile();
+    case '/editpassword':
+      return new ChangePassword();
+    default:
+      return new NotFoundPage();
   }
-}
+};
 
 window.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('#root');
 
   if (root) {
-    root.innerHTML = ROUTES(window.location.pathname);
-  } 
-    
-})
+    root.append(ROUTES(window.location.pathname).render());
+  }
+});

@@ -2,9 +2,11 @@ import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
 
 import { EventBus } from './EventBus';
+import { isEqual } from './IsEqual';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-abstract class Block<P extends Record<string, any> = any> {
+// Нельзя создавать экземпляр данного класса
+// eslint-disable-next-line
+class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -16,34 +18,26 @@ abstract class Block<P extends Record<string, any> = any> {
 
   protected props: P;
 
-  // eslint-disable-next-line no-use-before-define
-  public children: Record<string, Block | Block[]> = {};
+  /* eslint-disable-next-line no-use-before-define */
+  public children: Record<string, Block | Block[]>;
 
   private eventBus: () => EventBus;
 
   private _element: HTMLElement | null = null;
 
-  private _meta: { tagName: string; props: P };
-
-  private _className?: string;
-
-  constructor(tagName = 'div', propsWithChildren: P & { className?: string }) {
+  /** JSDoc
+   * @param {string} tagName
+   * @param {Object} props
+   *
+   * @returns {void}
+   */
+  constructor(propsWithChildren: P) {
     const eventBus = new EventBus();
 
-    const { className, ...props } = propsWithChildren || {};
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    const { props: filteredProps, children } = this._getChildrenAndProps(props);
-
-    this._meta = {
-      tagName,
-      props: filteredProps,
-    };
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     this.children = children;
-    this.props = this._makePropsProxy(filteredProps);
-    this._className = className;
+    this.props = this._makePropsProxy(props);
 
     this.eventBus = () => eventBus;
 
@@ -69,6 +63,7 @@ abstract class Block<P extends Record<string, any> = any> {
 
   _addEvents() {
     const { events = {} } = this.props as P & { events: Record<string, () => void> };
+
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
@@ -88,14 +83,7 @@ abstract class Block<P extends Record<string, any> = any> {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
-  }
-
   private _init() {
-    this._createResources();
-
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -103,16 +91,22 @@ abstract class Block<P extends Record<string, any> = any> {
 
   protected init() {}
 
-  _componentDidMount() {
-    this.componentDidMount();
+  async _componentDidMount() {
+    await this.componentDidMount();
   }
 
-  protected componentDidMount() {}
+  async componentDidMount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    // Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach(child => {
+      if (Array.isArray(child)) {
+        child.forEach(ch => ch.dispatchComponentDidMount());
+      } else {
+        child.dispatchComponentDidMount();
+      }
+    });
   }
 
   private _componentDidUpdate() {
@@ -126,13 +120,12 @@ abstract class Block<P extends Record<string, any> = any> {
   }
 
   setProps = (nextProps: P) => {
-    // TODO СРАВНЕНИЕ ПРОПС
     if (!nextProps) {
       return;
     }
-    const newProps = { ...this.props, ...nextProps };
-
-    Object.assign(this.props, newProps);
+    if (!isEqual(this.props, { ...this.props, ...nextProps })) {
+      Object.assign(this.props, nextProps);
+    }
   };
 
   get element() {
@@ -142,11 +135,13 @@ abstract class Block<P extends Record<string, any> = any> {
   private _render() {
     const fragment = this.render();
 
-    this._removeEvents();
+    const newElement = fragment.firstElementChild as HTMLElement;
 
-    this._element!.innerHTML = '';
+    if (this._element && newElement) {
+      this._element.replaceWith(newElement);
+    }
 
-    this._element!.append(fragment);
+    this._element = newElement;
 
     this._addEvents();
   }
@@ -163,11 +158,14 @@ abstract class Block<P extends Record<string, any> = any> {
       }
     });
 
-    const tmpl = document.createElement('template');
-    tmpl.innerHTML = Handlebars.compile(template)(contextAndStubs);
+    const html = Handlebars.compile(template)(contextAndStubs);
+
+    const temp = document.createElement('template');
+
+    temp.innerHTML = html;
 
     const stubReplace = (component: Block) => {
-      const stub = tmpl.content.querySelector(`[data-id="${component.id}"]`);
+      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
 
       if (!stub) {
         return;
@@ -184,7 +182,7 @@ abstract class Block<P extends Record<string, any> = any> {
       }
     });
 
-    return tmpl.content;
+    return temp.content;
   }
 
   protected render(): DocumentFragment {
@@ -219,11 +217,7 @@ abstract class Block<P extends Record<string, any> = any> {
   }
 
   _createDocumentElement(tagName: string) {
-    const element = document.createElement(tagName);
-    if (this._className) {
-      element.className = this._className; // Устанавливаем className, если он передан
-    }
-    return element;
+    return document.createElement(tagName);
   }
 
   show() {

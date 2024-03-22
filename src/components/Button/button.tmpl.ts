@@ -1,3 +1,1 @@
-export const tmpl = `
-  <button type='submit' class='customButton'>{{text}}</button>
-`;
+export const tmpl = "<button type='submit' class='customButton'>{{text}}</button>";

@@ -8,7 +8,7 @@
     "build": "npm run prebuild && vite build",
     "preview": "vite preview",
     "build-css": "sass -w --load-path=node_modules src:dist --style=compressed",
-    "start": "npm install && vite build && node server",
+    "start": "npm install && vite build && node server.js",
     "lint": "eslint ."
   },
   "devDependencies": {

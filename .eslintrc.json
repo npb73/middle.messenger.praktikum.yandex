@@ -19,9 +19,10 @@
         "no-tabs": ["error", { "allowIndentationTabs": true }],
         "no-underscore-dangle": "off",
         "class-methods-use-this": "off",
-        "no-unused-vars": ["error", { "args": "none" }],
         "default-param-last": "off",
         "linebreak-style": ["error", "unix"],
+        "no-shadow": "off",
+        "no-unused-vars": "off",
         "prettier/prettier": [
         1,
         {

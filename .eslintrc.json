@@ -20,9 +20,15 @@
         "no-underscore-dangle": "off",
         "class-methods-use-this": "off",
         "default-param-last": "off",
-        "linebreak-style": ["error", "unix"],
         "no-shadow": "off",
         "no-unused-vars": "off",
+        "no-useless-constructor": "off",
+        "no-console": "off",
+        "no-continue": "off",
+        "no-param-reassign": "off",
+        "max-classes-per-file": "off",
+        "no-empty-function": "off",
+        "no-prototype-builtins": "off",
         "prettier/prettier": [
         1,
         {

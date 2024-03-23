@@ -2,7 +2,7 @@ import { Routes } from '../../../main';
 import { RESOURCES_URL, profileFieldValues } from '../../components/constants';
 import { ProfileField } from '../../components/ProfileField';
 import { tmpl } from './profile.tmpl.js';
-import './profile.sass';
+import './profile.scss';
 import Block from '../../utils/Block';
 import { Button } from '../../components/Button';
 import AuthController from '../../controllers/AuthController';

@@ -1,6 +1,6 @@
 import { changePasswordFieldValues, RESOURCES_URL } from '../../components/constants';
 import { tmpl } from '../ChangeProfile/changeProfile.tmpl';
-import '../ChangeProfile/changeProfile.sass';
+import '../ChangeProfile/style.sass';
 import Block from '../../utils/Block';
 import { Button } from '../../components/Button';
 import { validator } from '../../utils/Validator';

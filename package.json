@@ -10,7 +10,7 @@
     "build-css": "sass -w --load-path=node_modules src:dist --style=compressed",
     "start": "npm install && vite build && node server.js",
     "lint": "eslint .",
-    "stylelint": "stylelint \"**/*.sass\"  --fix"
+    "stylelint": "stylelint \"**/*.sass\""
 
   },
   "devDependencies": {

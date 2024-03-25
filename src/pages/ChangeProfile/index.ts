@@ -3,7 +3,7 @@ import { IChangeProfileData } from '../../api/UsersApi';
 import { RESOURCES_URL, profileFieldValues } from '../../components/constants';
 import { ChangeProfileField } from '../../components/ChangeProfileField';
 import { tmpl } from './changeProfile.tmpl';
-import './changeProfile.sass';
+import './style.sass';
 import Block from '../../utils/Block';
 import { Button } from '../../components/Button';
 import { validator } from '../../utils/Validator';

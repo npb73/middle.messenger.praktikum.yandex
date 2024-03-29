@@ -1,13 +1,19 @@
 export const tmpl = `
-<div class="filter"></div>
-<div class="mainWrapper">
-  <form class="formWrapper">
-    <h1>your profile</h1> 
-
-    <div class="avatar">YOU</div>
-
-    {{{profileForm}}}
-    
-  </form>
-</div>
+  <div class='profilePage'>
+    <div class='leftsideModule'>
+      {{{chatPageButton}}}
+    </div>
+    <div class='basicContainer'>
+      <img class='profileImg' src={{imgSrc}} alt="IMG"/>
+      <div class='profileName'>{{profileName}}</div>
+      {{#each profileFields}}
+            {{{this}}}
+      {{/each}}
+      <div class='linkContainer'>
+        {{{changeProfileButton}}}
+        {{{changePasswordButton}}}
+        {{{logoutButton}}}
+      </div>
+    </div>
+  </div>
 `;

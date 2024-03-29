@@ -1,3 +1,1 @@
-export const tmpl = `
-  <a  class="customLink" href="{{to}}">{{text}}</a>
-`;
+export const tmpl = '<a  class="custom-link" href="{{to}}">{{text}}</a>';

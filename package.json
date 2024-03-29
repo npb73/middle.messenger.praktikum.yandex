@@ -8,8 +8,10 @@
     "build": "npm run prebuild && vite build",
     "preview": "vite preview",
     "build-css": "sass -w --load-path=node_modules src:dist --style=compressed",
-    "start": "npm install && vite build && node server",
-    "lint": "eslint ."
+    "start": "npm install && vite build && node server.js",
+    "lint": "eslint .",
+    "stylelint": "stylelint \"**/*.sass\""
+
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.11.0",

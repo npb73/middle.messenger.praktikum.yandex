@@ -1,10 +1,7 @@
 {
-  "extends": "stylelint-config-standard-scss",
-  "plugins": ["stylelint-scss"],
+  "extends": "stylelint-config-standard",
   "rules": {
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
-    "selector-class-pattern": null,
-    "no-descending-specificity": null
-  }
+    "import-notation": null
+  },
+  "customSyntax": "postcss-scss"
 }

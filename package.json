@@ -55,5 +55,10 @@
   "engines": {
     "npm": ">=8.0.0",
     "node": ">=16.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && npm run lint"
+    }
   }
 }

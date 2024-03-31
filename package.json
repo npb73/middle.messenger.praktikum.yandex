@@ -2,6 +2,7 @@
   "name": "yandex_messanger",
   "private": true,
   "version": "0.0.2",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "prebuild": "tsc --noEmit",
@@ -10,10 +11,13 @@
     "build-css": "sass -w --load-path=node_modules src:dist --style=compressed",
     "start": "npm install && vite build && node server.js",
     "lint": "eslint .",
-    "stylelint": "stylelint \"**/*.sass\""
-
+    "stylelint": "stylelint \"**/*.sass\"",
+    "test": "mocha --require ignore-styles"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.14",
+    "@types/mocha": "^10.0.6",
+    "@types/sinon": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "eslint": "^8.53.0",
@@ -21,22 +25,31 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-n": "^16.3.1",
     "eslint-plugin-promise": "^6.1.1",
-    "typescript": "^5.2.2",
-    "vite": "^4.4.5",
+    "ignore-styles": "^5.0.1",
     "stylelint": "^15.11.0",
     "stylelint-config-standard-scss": "^11.1.0",
-    "stylelint-scss": "^5.3.1"
+    "stylelint-scss": "^5.3.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.5"
   },
   "dependencies": {
+    "chai": "^5.1.0",
+    "css-modules-require-hook": "^4.2.3",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "express": "^4.18.2",
     "handlebars": "^4.7.8",
+    "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
+    "mocha": "^10.4.0",
     "nanoid": "^5.0.3",
+    "node-sass": "^9.0.0",
     "path": "^0.12.7",
-    "sass": "^1.68.0",
-    "sass-loader": "^13.3.2"
+    "sass": "^1.72.0",
+    "sass-loader": "^13.3.2",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.9.2"
   },
   "engines": {
     "npm": ">=8.0.0",

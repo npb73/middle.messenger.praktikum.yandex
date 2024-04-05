@@ -16,7 +16,7 @@ class Block<P extends Record<string, any> = any> {
 
   public id = nanoid(6);
 
-  protected props: P;
+  public props: P;
 
   /* eslint-disable-next-line no-use-before-define */
   public children: Record<string, Block | Block[]>;
@@ -93,6 +93,7 @@ class Block<P extends Record<string, any> = any> {
 
   async _componentDidMount() {
     await this.componentDidMount();
+    return true;
   }
 
   async componentDidMount() {}

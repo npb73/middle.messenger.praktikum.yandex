@@ -1,15 +1,17 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable no-console */
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, '/dist')));
+app.use(express.static(`${__dirname}/dist`));
 
-app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname, '/dist/index.html'));
+app.get('*', (req, res) => {
+  res.sendFile('./dist/index.html', { root: __dirname });
 });
 
 app.listen(PORT, () => {
